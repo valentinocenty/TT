@@ -1,0 +1,35 @@
+Basé sur le trivial pursuit 
+
+plateau de forme carrée avec une croix au milieu.
+
+4 joueurs max
+4 catégories :
+-trouver la signification du mot dans un contexte
+-compréhension orale
+-grammaire
+-comprehension écrite ?
+1 camembert par personne divisé en 6 portions.
+1 portion de chaque minimum 
+ouverture de la croix lorsque le camembert est complet
+pour réussir à gagner il faut répondre à 4 questions imposées
+
+jeu type :
+ouverture du jeu
+choix du nombre de joueurs(+nom) et assignation d'une couleur ( bleue, rouge, verte, jaune) à chaque joueur
+lancement du jeu
+chaque pion est sur sa couleur de départ
+a chaque tour de jeu le joueur lance les dés
+il peut naviguer entre les cases acessibles grace aux flèches.
+En validant son choix avec entrée la question correspondant à la catégorie choisie lui est posée.
+Si il répond correctement il gagne une portion de la catégorie et rejoue.
+Si un joueur possède déjà deux portions d'une catégorie ou qu'il n'en a qu'une mais qu'il lui manque d'autre catégorie il ne gagne pas de portion ( mais doit quand même répondre à la question). Une fois qu'un camembert est complet le joueur doit revenir sur sa couleur ( à la manière des petit chevaux). il doit alors répondre à 4 questions (il monte d'une case et rejoue à chaque bonne réponse il reste sur la case ou il est et rejoue.
+le premier arrivé au centre gagne 
+
+
+gnuplot : 
+
+>set terminal png size 250,250
+>set output "ckdbc.png" 
+>plot la fonction
+
+aptitude show gnuplot
