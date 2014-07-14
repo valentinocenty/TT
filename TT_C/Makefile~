@@ -1,0 +1,5 @@
+Lugdunum : Main.o 
+	gcc -o Lugdunum Main.o -g -std=c99  `pkg-config --cflags --libs allegro-5.0 allegro_acodec-5.0 allegro_audio-5.0 allegro_color-5.0 allegro_dialog-5.0 allegro_font-5.0 allegro_image-5.0 allegro_main-5.0 allegro_memfile-5.0  allegro_primitives-5.0 allegro_ttf-5.0`
+
+Main.o : Main.c Options.c Ecran.c Menu.c Options.h Ecran.h Menu.h Control.h Control.c Plateau.c Plateau.h Piece.h Piece.c Terrain.h Terrain.c Joueur.h Joueur.c Pioche.h Placement.c Partie.c Partie.h Pioche.c Pioche.h TestJeu.c TestJeu.h
+	gcc -o Main.o -c Main.c -g -std=c99 `pkg-config --cflags --libs allegro-5.0 allegro_acodec-5.0 allegro_audio-5.0 allegro_color-5.0 allegro_dialog-5.0 allegro_font-5.0 allegro_image-5.0 allegro_main-5.0 allegro_memfile-5.0  allegro_primitives-5.0 allegro_ttf-5.0`

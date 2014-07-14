@@ -1,0 +1,3 @@
+screen_mode=WINDOWED
+x_resolution=800
+y_resolution=600
