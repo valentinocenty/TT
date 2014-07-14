@@ -9,12 +9,17 @@
 
 static struct Options * options;
 static struct Screen * screen;
+static struct Control * control;
 
 #include "Options.h"
 #include "Screen.h"
+#include "Menu.h"
+#include "Control.h"
 
 #include "Options.c"
 #include "Screen.c"
+#include "Menu.c"
+#include "Control.c"
 
 int main(int argc,char ** argv){
 if(al_init()<0){ //fonction d'initialisation
@@ -33,18 +38,18 @@ if(al_init()<0){ //fonction d'initialisation
   
 
   screen=create_screen(options);
-/** DEBUT 
-  control=creer_control(ecran);
+
+  control=create_control(screen);
+
+  ALLEGRO_BITMAP * bg_picture=NULL;
+  bg_picture = al_load_bitmap("./Ressources/Pictures/test.png");
 
 
-
- // struct Control * control =creer_control(ecran);
-  ALLEGRO_BITMAP * image_fond=NULL;
-  image_fond = al_load_bitmap("./ressource/image/Background_lugdunum.png");
   ALLEGRO_BITMAP * image_titre_d=NULL;
-  image_titre_d =al_load_bitmap("./ressource/image/jouer_d.png");
+  image_titre_d =al_load_bitmap("./Ressources/Pictures/play_d.png");
   ALLEGRO_BITMAP * image_titre_s=NULL;
-  image_titre_s=al_load_bitmap("./ressource/image/jouer_s.png");
+  image_titre_s=al_load_bitmap("./Ressources/Pictures/play_s.png");
+/** DEBUT 
   ALLEGRO_BITMAP * image_credit_d=NULL;
   image_credit_d =al_load_bitmap("./ressource/image/credit_d.png");
   ALLEGRO_BITMAP * image_credit_s=NULL;
@@ -53,15 +58,16 @@ if(al_init()<0){ //fonction d'initialisation
   image_quitter_d =al_load_bitmap("./ressource/image/quitter_d.png");
   ALLEGRO_BITMAP * image_quitter_s=NULL;
   image_quitter_s=al_load_bitmap("./ressource/image/quitter_s.png");
-
-  if (!image_fond || !image_titre_d || !image_titre_s){
+*/
+  if (!bg_picture || !image_titre_d || !image_titre_s){
     printf("bug image\n");
   }
 
 
-  struct Titre *titres=malloc(sizeof(struct Titre)*3);
-  struct Menu * menu=creer_menu(image_fond,titres,creer_position_collonne(3,200,300,300),3);
+  struct Title *titles=malloc(sizeof(struct Title)*1);
+  struct Menu * menu=create_menu(bg_picture,titles,create_column_position(1,200,300,300),1);
   //struct Control* control=creer_control(ecran);
+  /** DEBUT
   void (*p)(void);
   void jouer(){
     partie = creer_partie();
@@ -74,7 +80,7 @@ if(al_init()<0){ //fonction d'initialisation
     al_rest(5.0);
   }
   void quitter(){quitter_jeu(partie);}
-  void f(){control_menu(menu,control);}
+  
   
   p=jouer;
   titres[0]=*creer_titre(image_titre_s,image_titre_d,*p);
@@ -82,18 +88,24 @@ if(al_init()<0){ //fonction d'initialisation
   titres[1]=*creer_titre(image_credit_s,image_credit_d,*p);
   p=quitter;
   titres[2]=*creer_titre(image_quitter_s,image_quitter_d,*p);
+*/
+  void (*p)(void);
+  void f(){control_menu(menu,control);}
 
+  titles[0]=*create_title(image_titre_s,image_titre_d,*p);
   if (!menu ){
     printf("bug menu\n");
   }
-
-  afficher_menu(menu);
+  // HERE
+  display_menu(menu);
+  printf(" ok n5 \n");
   al_flip_display();
+  printf("ok n6\n");
   al_rest(1.0);
-  al_flush_event_queue(control->evenement);
+  al_flush_event_queue(control->event);
   control_menu(menu,control);
 
-  */
+  
 
   return 0 ;
 }

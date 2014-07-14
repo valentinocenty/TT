@@ -23,8 +23,8 @@ struct Control * create_control(struct Screen * screen){
    al_register_event_source(control->event,al_get_keyboard_event_source());
    al_install_mouse();
    al_register_event_source(control->event,al_get_mouse_event_source());
-   al_show_mouse_cursor(ecran->display);
-   al_register_event_source(control->event,al_get_display_event_source(ecran->display));
+   al_show_mouse_cursor(screen->display);
+   al_register_event_source(control->event,al_get_display_event_source(screen->display));
    return control;
 }
 
@@ -41,19 +41,19 @@ int control_menu(struct Menu * menu,struct Control * control){
   while (event.type!=ALLEGRO_KEY_DOWN){
     switch (event.keyboard.keycode){
     case ALLEGRO_KEY_UP:
-      titre_precedent(menu);
+      next_title(menu);
       break;
     case ALLEGRO_KEY_DOWN:
-      titre_suivant(menu);
+      previous_title(menu);
       break;
     case ALLEGRO_KEY_ENTER:
-      (*(menu->titres[menu->titre_selection].lien))();
+      (*(menu->titles[menu->title_selection].link))();
       break;
     case ALLEGRO_KEY_ESCAPE:
       return 0;
       break;
     }
-    afficher_menu(menu);
+    display_menu(menu);
     al_flip_display();
     al_rest(0.1);
     al_flush_event_queue(control->event);
