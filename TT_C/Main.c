@@ -15,11 +15,13 @@ static struct Control * control;
 #include "Screen.h"
 #include "Menu.h"
 #include "Control.h"
+#include "Player.h"
 
 #include "Options.c"
 #include "Screen.c"
 #include "Menu.c"
 #include "Control.c"
+#include "Player.c"
 
 int main(int argc,char ** argv){
 if(al_init()<0){ //fonction d'initialisation
@@ -34,7 +36,6 @@ if(al_init()<0){ //fonction d'initialisation
 
   options=create_options();
   load_options(options,"Options.txt");
-
   
 
   screen=create_screen(options);
@@ -98,9 +99,7 @@ if(al_init()<0){ //fonction d'initialisation
   }
   // HERE
   display_menu(menu);
-  printf(" ok n5 \n");
   al_flip_display();
-  printf("ok n6\n");
   al_rest(1.0);
   al_flush_event_queue(control->event);
   control_menu(menu,control);
