@@ -1,7 +1,22 @@
+typedef enum Square_type {//  maybe redundant with enum type_camembert in Player.c  
+	VOID,
+	GRAMMAR,
+	VOCAB,
+	FILL,
+	TRANSLATE
+	//To complete
+}Square_type;
+
+struct Square{
+	int x;
+	int y;
+	Square_type * category;
+};
+
 struct Game {
 	int nb_players;
 	struct Player ** players;
-	struct Board * board;
+	struct Square * board;
 };
 
 struct Game * create_game();
