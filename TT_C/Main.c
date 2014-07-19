@@ -16,12 +16,14 @@ static struct Control * control;
 #include "Menu.h"
 #include "Control.h"
 #include "Player.h"
+#include "Game.h"
 
 #include "Options.c"
 #include "Screen.c"
 #include "Menu.c"
 #include "Control.c"
 #include "Player.c"
+#include "Game.c"
 
 int main(int argc,char ** argv){
 if(al_init()<0){ //fonction d'initialisation

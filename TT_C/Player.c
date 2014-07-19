@@ -9,3 +9,7 @@ struct Player * create_player(char * name){
 
 	return player;
 }
+
+void free_player(struct Player * player){
+	free(player);
+}
